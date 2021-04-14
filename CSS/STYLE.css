@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #0d111d !important;
+  text-align: center;
+  vertical-align: middle;
+}
+.table-sm {
+  padding: 0 !important;
+  margin: 0 !important;
+  text-transform: uppercase;
+  width: 100% !important;
+}
+.Head {
+  background: linear-gradient(
+    to right,
+    rgba(178, 129, 44, 1) 0,
+    rgba(244, 222, 98, 1) 28%,
+    rgba(244, 226, 139, 1) 51%,
+    rgba(244, 222, 98, 1) 71%,
+    rgba(178, 129, 44, 1) 100%
+  );
+  border-radius: 10px;
+  border: 1px solid #dda52c;
+}
+.Body {
+  border-radius: 10px;
+  border: 1px solid #dda52c;
+  font-weight: 300 !important;
+  font-family: cursive;
+  color: white;
+}
+tr {
+  width: 100%;
+}
+[id*="CR"] {
+  width: 30%;
+}
+[id*="CN"] {
+  width: 35%;
+}
+[id*="BR"] {
+  width: 35%;
+}
+[id*="AR"] {
+  width: 35%;
+}
+[id*="HL"] {
+  font-size: 14px;
+  color: #f4de63;
+}
+#UP {
+  color: rgb(0, 128, 0);
+  background-image: url("SORT_UP.svg") no-repeat scroll 98px 6px;
+}
+#Curr {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  font-size: 10px;
+  font-weight: 800;
+  margin-right: 2px;
+}
+td > div > img {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  flex: 0.15;
+}
+.UP {
+  color: rgb(2, 161, 2);
+}
+
+.DOWN {
+  color: rgb(245, 84, 84);
+}
