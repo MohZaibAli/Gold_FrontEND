@@ -4,8 +4,8 @@ var Connections = 0;
 var Messages = 0;
 
 // Fetching
-const Connect = async () => {
-  let ws = await new WebSocket("wss://gold-rates-usd.herokuapp.com");
+const Connect = () => {
+  let ws = new WebSocket("ws://localhost:5000"); //"wss://gold-rates-usd.herokuapp.com");
   var z = `6F92AD7721C33520FC815BCA7E8BB297B96C21B17CDB03872F71`;
   var y = "Developed_By_MohZaib_Tech";
   ws.addEventListener("open", () => {
@@ -16,19 +16,18 @@ const Connect = async () => {
       })
     );
   });
-  ws.addEventListener("message", async (e) => {
+  ws.addEventListener("message", (e) => {
     if (JSON.parse(e.data).Error == undefined) {
       Messages++;
       Data_Manipulate(JSON.parse(e.data));
-      setTimeout(() => {
-        ws.send(
-          JSON.stringify({
-            Type: "Subscribe",
-          })
-        );
-      }, 500);
+      ws.send(
+        JSON.stringify({
+          Type: "Subscribe",
+        })
+      );
     } else {
       ws.close();
+      Connect();
     }
   });
   ws.addEventListener("close", () => {});
