@@ -16,9 +16,9 @@ const MY_API = () => {
       })
     );
   });
-  ws.addEventListener("message", async (e) => {
+  ws.addEventListener("message", (e) => {
     Messages++;
-    await Data_Manipulate(JSON.parse(e.data));
+    Data_Manipulate(JSON.parse(e.data));
     setTimeout(() => {
       ws.send(
         JSON.stringify({
