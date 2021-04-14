@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 body {
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   background-color: #0d111d !important;
   text-align: center;
   vertical-align: middle;
@@ -52,32 +59,30 @@ tr {
   font-size: 14px;
   color: #f4de63;
 }
-#UP {
-  color: rgb(0, 128, 0);
-  background-image: url("SORT_UP.svg") no-repeat scroll 98px 6px;
-}
-#Curr {
+sup {
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -o-user-select: none;
   user-select: none;
-  font-size: 10px;
-  font-weight: 800;
-  margin-right: 2px;
-}
-td > div > img {
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  flex: 0.15;
 }
 .UP {
   color: rgb(2, 161, 2);
 }
-
+.UP_IMG {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
 .DOWN {
   color: rgb(245, 84, 84);
+}
+.DOWN_IMG {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }

@@ -50,9 +50,9 @@ const DF = (N, O) => {
   const SS = NS.substring(0, FD);
   const DS = NS.substring(FD);
   if (DIFF < 0) {
-    return `${SS}<span class="DOWN">${DS}</span><span><img src="IMG/SORT_DOWN.svg"/></span>`;
+    return `${SS}<span class="DOWN">${DS}</span><span class="DOWN_IMG"><img src="IMG/SORT_DOWN.svg"/></span>`;
   } else if (DIFF > 0) {
-    return `${SS}<span class="UP">${DS}</span><span><img src="IMG/SORT_UP.svg"/></span>`;
+    return `${SS}<span class="UP">${DS}</span><span class="UP_IMG"><img src="IMG/SORT_UP.svg"/></span>`;
   } else {
     return `${SS}`;
   }
@@ -131,4 +131,4 @@ const Data_Manipulate = (JD) => {
     document.cookie == `${Site}=${JSON.stringify(JD)}`;
   }
 };
-document.addEventListener("DOMContentLoaded", Connect());
+//document.addEventListener("DOMContentLoaded", Connect());
