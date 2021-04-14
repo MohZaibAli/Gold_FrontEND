@@ -131,4 +131,4 @@ const Data_Manipulate = (JD) => {
     document.cookie == `${Site}=${JSON.stringify(JD)}`;
   }
 };
-//document.addEventListener("DOMContentLoaded", Connect());
+document.addEventListener("DOMContentLoaded", Connect());
