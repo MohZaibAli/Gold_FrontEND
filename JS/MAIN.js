@@ -5,7 +5,7 @@ var Messages = 0;
 
 // Fetching
 const Connect = () => {
-  let ws = new WebSocket("wss://obscure-harbor-71297.herokuapp.com");
+  let ws = new WebSocket("wss://gold-rates-usd.herokuapp.com");
   var z = `6F92AD7721C33520FC815BCA7E8BB297B96C21B17CDB03872F71`;
   var y = "Developed_By_MohZaib_Tech";
   ws.addEventListener("open", () => {
