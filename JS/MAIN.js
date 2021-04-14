@@ -19,11 +19,13 @@ const MY_API = () => {
   ws.addEventListener("message", async (e) => {
     Messages++;
     await Data_Manipulate(JSON.parse(e.data));
-    ws.send(
-      JSON.stringify({
-        Type: "Subscribe",
-      })
-    );
+    setTimeout(() => {
+      ws.send(
+        JSON.stringify({
+          Type: "Subscribe",
+        })
+      );
+    }, 1000);
   });
 };
 // Manipulation
