@@ -4,7 +4,7 @@ var Connections = 0;
 var Messages = 0;
 
 // Fetching
-const MY_API = () => {
+const Connect = () => {
   let ws = new WebSocket("wss://obscure-harbor-71297.herokuapp.com");
   var z = `6F92ADB200663185FC815BCA7E8BB297B96C21B17CDB03872F71`;
   var y = "Developed_By_MohZaib_Tech";
@@ -127,3 +127,4 @@ const Data_Manipulate = (JD) => {
     document.cookie == `${Site}=${JSON.stringify(JD)}`;
   }
 };
+document.addEventListener("DOMContentLoaded", Connect());
