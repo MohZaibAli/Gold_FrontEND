@@ -17,15 +17,19 @@ const Connect = () => {
     );
   });
   ws.addEventListener("message", (e) => {
-    Messages++;
-    Data_Manipulate(JSON.parse(e.data));
-    setTimeout(() => {
-      ws.send(
-        JSON.stringify({
-          Type: "Subscribe",
-        })
-      );
-    }, 1000);
+    if (JSON.parse(e.data).Error == undefined) {
+      Messages++;
+      Data_Manipulate(JSON.parse(e.data));
+      setTimeout(() => {
+        ws.send(
+          JSON.stringify({
+            Type: "Subscribe",
+          })
+        );
+      }, 1000);
+    } else {
+      ws.close();
+    }
   });
 };
 // Manipulation
