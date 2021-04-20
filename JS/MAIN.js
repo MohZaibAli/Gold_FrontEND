@@ -5,33 +5,41 @@ var Messages = 0;
 
 //  Fetching
 const Connect = () => {
-  let ws = new WebSocket("wss://gold-rates-usd.herokuapp.com");
+  const Socket = io("ws://localhost:5000"); // wss://gold-rates-usd.herokuapp.com");
   var z = `6F92AD7721C33520FC815BCA7E8BB297B96C21B17CDB03872F71`;
   var y = "Developed_By_MohZaib_Tech";
-  ws.addEventListener("open", () => {
-    ws.send(
-      JSON.stringify({
-        UUID_SESSION: z,
-        HANDLE_KEY: y,
-      })
-    );
+  Socket.emit(
+    "message",
+    JSON.stringify({
+      UUID_SESSION: z,
+      HANDLE_KEY: y,
+    })
+  );
+  Socket.on("disconnect", () => {
+    Connect();
+    Data_Manipulate(false);
   });
-  ws.addEventListener("message", (e) => {
-    if (JSON.parse(e.data).Error == "Reconnect") {
-      ws.close();
+  Socket.on("message", (DATA) => {
+    if (DATA.Error != undefined) {
       Connect();
+    } else if (DATA.M != undefined) {
+      Socket.emit(
+        "message",
+        JSON.stringify({
+          Type: "Subscribe",
+        })
+      );
     } else {
       Messages++;
-      Data_Manipulate(JSON.parse(e.data));
-      ws.send(
+      Data_Manipulate(DATA);
+      Socket.emit(
+        "message",
         JSON.stringify({
           Type: "Subscribe",
         })
       );
     }
   });
-  ws.addEventListener("close", () => {});
-  Data_Manipulate(false);
 };
 
 // Manipulation
