@@ -5,39 +5,24 @@ var Messages = 0;
 
 //  Fetching
 const Connect = () => {
-  const Socket = io("wss://gold-rates-usd.herokuapp.com");
+  const Socket = io.connect("wss://gold-rates-usd.herokuapp.com");
   var z = `6F92AD7721C33520FC815BCA7E8BB297B96C21B17CDB03872F71`;
   var y = "Developed_By_MohZaib_Tech";
-  Socket.emit(
-    "message",
-    JSON.stringify({
-      UUID_SESSION: z,
-      HANDLE_KEY: y,
-    })
-  );
+  Socket.emit("jr", z);
+  Socket.on("connect_error", () => {
+    Socket.disconnect();
+  });
+
   Socket.on("disconnect", () => {
-    Connect();
     Data_Manipulate(false);
   });
   Socket.on("message", (DATA) => {
     if (DATA.Error != undefined) {
+      Socket.disconnect();
       Connect();
-    } else if (DATA.M != undefined) {
-      Socket.emit(
-        "message",
-        JSON.stringify({
-          Type: "Subscribe",
-        })
-      );
     } else {
       Messages++;
       Data_Manipulate(DATA);
-      Socket.emit(
-        "message",
-        JSON.stringify({
-          Type: "Subscribe",
-        })
-      );
     }
   });
 };
