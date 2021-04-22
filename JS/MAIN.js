@@ -5,7 +5,7 @@ var Messages = 0;
 
 //  Fetching
 const Connect = () => {
-  const Socket = io.connect("wss://gold-rates-usd.herokuapp.com");
+  const Socket = io.connect("ws://localhost:5000"); //"wss://gold-rates-usd.herokuapp.com");
   var z = `6F92AD7721C33520FC815BCA7E8BB297B96C21B17CDB03872F71`;
   var y = "Developed_By_MohZaib_Tech";
   Socket.emit("jr", z);
@@ -16,7 +16,7 @@ const Connect = () => {
   Socket.on("disconnect", () => {
     Data_Manipulate(false);
   });
-  Socket.on("message", (DATA) => {
+  Socket.on("JD", (DATA) => {
     if (DATA.Error != undefined) {
       Socket.disconnect();
       Connect();

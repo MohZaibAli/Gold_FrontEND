@@ -32,11 +32,12 @@ body {
     rgba(178, 129, 44, 1) 100%
   );
   border-radius: 10px;
-  border: 1px solid #dda52c;
+  border: 5px solid #dda52c;
+  margin-bottom: 10px;
 }
 .Body {
   border-radius: 10px;
-  border: 1px solid #dda52c;
+  border: 5px solid #dda52c;
   font-weight: 300 !important;
   font-family: cursive;
   color: white;
