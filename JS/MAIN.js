@@ -2,30 +2,51 @@
 const Site = "MZP";
 var Connections = 0;
 var Messages = 0;
+const z = `6F92AD7721C33520FC815BCA7E8BB297B96C21B17CDB03872F71`;
 
 //  Fetching
-const Connect = () => {
-  const Socket = io.connect("wss://gold-rates-usd.herokuapp.com");
-  var z = `6F92AD7721C33520FC815BCA7E8BB297B96C21B17CDB03872F71`;
-  var y = "Developed_By_MohZaib_Tech";
-  Socket.emit("jr", z);
-  Socket.on("connect_error", () => {
-    Socket.disconnect();
+let ws;
+function Connect() {
+  if (ws) {
+    ws.onerror = ws.onopen = ws.onclose = null;
+    ws.close();
+  }
+  ws = new WebSocket("wss://gold-rates-usd.herokuapp.com");
+  ws.onopen = () => {
+    ws.send("GSJ," + z);
+  };
+  ws.addEventListener("message", (e) => {
+    Data_Manipulate(JSON.parse(e.data));
   });
+  ws.addEventListener("close", () => {
+    ws = null;
+    Connect();
+  });
+}
+// const Connect = () => {
+//   const URI = "wss://gold-rates-usd.herokuapp.com";
+//   const Socket = io.connect(URI);
+//   var z = `6F92AD7721C33520FC815BCA7E8BB297B96C21B17CDB03872F71`;
+//   var y = "Developed_By_MohZaib_Tech";
+//   Socket.emit("jr", z);
+//   Socket.on("connect_error", (err) => {
+//     console.log(err);
+//     Socket.disconnect();
+//   });
 
-  Socket.on("disconnect", () => {
-    Data_Manipulate(false);
-  });
-  Socket.on("JD", (DATA) => {
-    if (DATA.Error != undefined) {
-      Socket.disconnect();
-      Connect();
-    } else {
-      Messages++;
-      Data_Manipulate(DATA);
-    }
-  });
-};
+//   Socket.on("disconnect", () => {
+//     Data_Manipulate(false);
+//   });
+//   Socket.on("JD", (DATA) => {
+//     if (DATA.Error != undefined) {
+//       Socket.disconnect();
+//       Connect();
+//     } else {
+//       Messages++;
+//       Data_Manipulate(DATA);
+//     }
+//   });
+// };
 
 // Manipulation
 const DF = (N, O) => {
