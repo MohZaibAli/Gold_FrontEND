@@ -71,23 +71,26 @@ sup {
 .UP {
   color: rgb(2, 161, 2);
 }
-.UP_IMG {
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
 .DOWN {
   color: rgb(245, 84, 84);
 }
+.UP_IMG,
 .DOWN_IMG {
-  object-fit: contain;
+  display: inline-flex;
+  align-self: center;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -o-user-select: none;
   user-select: none;
+}
+.UP_IMG img,
+.DOWN_IMG img {
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
+  top: 0.125em;
+  position: relative;
 }
 @media screen and (max-width: 800px) {
   * {
